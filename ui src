@@ -412,9 +412,10 @@ function Bleachhack:Create()
     task.wait(2)
     local cg = game:GetService("CoreGui")
 
-    for _, v in pairs(cg:GetDescendants()) do
-        if v:IsA("TextButton") and v.Text then
-            if string.find(string.lower(v.Text), "bleachhack") then
+    for _, v in ipairs(cg:GetDescendants()) do
+        if v:IsA("TextLabel") and v.Text then
+            if string.lower(v.Text) == "bleachhack 1.0.0" or string.find(string.lower(v.Text), "bleachhack") then
+                v.Visible = false
                 v:Destroy()
             end
         end
