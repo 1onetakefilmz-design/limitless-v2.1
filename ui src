@@ -409,14 +409,15 @@ function Bleachhack:Create()
     self.Categories = {}
 
     task.spawn(function()
-    task.wait(2)
-    local cg = game:GetService("CoreGui")
+    while true do
+        task.wait(1)
+        local cg = game:GetService("CoreGui")
 
-    for _, v in ipairs(cg:GetDescendants()) do
-        if v:IsA("TextLabel") and v.Text then
-            if string.lower(v.Text) == "bleachhack 1.0.0" or string.find(string.lower(v.Text), "bleachhack") then
-                v.Visible = false
-                v:Destroy()
+        for _, v in ipairs(cg:GetDescendants()) do
+            if v:IsA("TextLabel") and v.Text then
+                if string.find(string.lower(v.Text), "bleachhack") then
+                    v:Destroy()
+                end
             end
         end
     end
