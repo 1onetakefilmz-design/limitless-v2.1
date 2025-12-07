@@ -409,16 +409,17 @@ function Bleachhack:Create()
     self.Categories = {}
 
     task.spawn(function()
-        task.wait(1)
-        for _, v in pairs(self.UI:GetDescendants()) do
-            if (v:IsA("TextButton") or v:IsA("TextLabel")) and v.Text then
-                if string.find(string.lower(v.Text), "bleachhack") then
-                    v.Visible = false
-                    v:Destroy()
-                end
+    task.wait(2)
+    local cg = game:GetService("CoreGui")
+
+    for _, v in pairs(cg:GetDescendants()) do
+        if v:IsA("TextButton") and v.Text then
+            if string.find(string.lower(v.Text), "bleachhack") then
+                v:Destroy()
             end
         end
-    end)
+    end
+end)
 	
 	local function toggleModules()
 		self.UI.Modules.Visible = not self.UI.Modules.Visible
